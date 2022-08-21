@@ -1,0 +1,146 @@
+/*!
+ *  Exam OOP by 2440081192 - Dian Aldiansyah
+ */
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Calculator
+{
+    public:
+        int first_num;
+        int second_num;
+
+        virtual int getResult()
+        {
+            return 0;
+        }
+    };
+
+class Addition : public Calculator
+{
+    public:
+        virtual int getResult()
+        {
+            return first_num + second_num;
+        }
+};
+
+class Subtraction : public Calculator
+{
+    public:
+        virtual int getResult()
+        {
+            return first_num - second_num;
+        }
+};
+
+class Multiplication : public Calculator
+{
+    public:
+        virtual int getResult()
+        {
+            return first_num * second_num;
+        }
+};
+
+class Division : public Calculator
+{
+    public:
+        virtual int getResult()
+        {
+            return first_num / second_num;
+        }
+};
+
+
+int main() {
+    int choice, status, first_num, second_num;
+
+    status = 0;
+    while (status == 0) {
+        cout << "==============================" << endl;
+        cout << "##        DA Calculator     ##" << endl;
+        cout << "==============================" << endl;
+        cout << "1. Penjumlahan (+)" << endl;
+        cout << "2. Pengurangan (-)" << endl;
+        cout << "3. Perkalian (x) " << endl;
+        cout << "4. Pembagian (/)" << endl;
+        cout << "5. Keluar" << endl;
+        cout << endl;
+        cout << "Masukkan pilihan: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1: {
+                cout << "Bilangan 1: ";
+                cin >> first_num;
+                cout << "Bilangan 2: ";
+                cin >> second_num;
+                
+                Calculator *c = new Addition();
+                c->first_num = first_num; 
+                c->second_num = second_num;
+                cout << "Hasil : "<< c->getResult() << endl;
+
+                delete c;
+                break;
+            }
+
+            case 2: {
+                cout << "Bilangan 1: ";
+                cin >> first_num;
+                cout << "Bilangan 2: ";
+                cin >> second_num;
+                
+                Calculator *c = new Subtraction();
+                c->first_num = first_num; 
+                c->second_num = second_num;
+                cout << "Hasil : "<< c->getResult() << endl;
+
+                delete c;
+                break;
+            }
+
+            case 3: {
+                cout << "Bilangan 1: ";
+                cin >> first_num;
+                cout << "Bilangan 2: ";
+                cin >> second_num;
+                
+                Calculator *c = new Multiplication();
+                c->first_num = first_num; 
+                c->second_num = second_num;
+                cout << "Hasil : "<< c->getResult() << endl;
+                break;
+            }
+
+            case 4: {
+                cout << "Bilangan 1: ";
+                cin >> first_num;
+                cout << "Bilangan 2: ";
+                cin >> second_num;
+                
+                Calculator *c = new Division();
+                c->first_num = first_num; 
+                c->second_num = second_num;
+                cout << "Hasil : "<< c->getResult() << endl;
+                break;
+            }
+
+            case 5: {
+                cout << "Keluar.";
+                exit(0);
+                break;
+            }
+
+            default: {
+                cout << "Input Anda salah.\n";
+                break;
+            }
+        }   
+    }
+
+    return 0;
+}
